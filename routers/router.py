@@ -15,7 +15,7 @@ async def get_all_users(db: Session = Depends(get_db)):
 
 @router.post("/", tags=["user"])
 async def create(data: UserDTO.User = None, db: Session = Depends(get_db)):
-    user = UserDTO.User(name=data.name, balance=data.balance, registration_time=data.registration_time)
+    user = UserDTO.User(name=data.name,email=data.email,balance=data.balance) 
     return UserService.create_user(user, db)
 
 @router.get("/{id}", tags=["user"])

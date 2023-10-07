@@ -6,7 +6,7 @@ def get_all_users(db: Session):
         return db.query(User).all()
 
 def create_user(data: user_model.User, db: Session):
-    user = User(name=data.name, balance=data.balance)
+    user = User(name=data.name, email=data.email, balance=data.balance)
     try:
         db.add(user)
         db.commit()
