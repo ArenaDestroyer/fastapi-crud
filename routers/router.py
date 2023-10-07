@@ -15,10 +15,8 @@ async def create(data: UserDTO.User = None, db: Session = Depends(get_db)):
 
 @router.get("/{id}", tags=["user"])
 async def get(id: int = None, db: Session = Depends(get_db)):
-    user = UserService.get_user(id, db)
-    if user:
-        return {"user": user, "registration_time": user.registration_time}
-    return {"user": "Alisher kotakbas", "registration_time": "-1 blyaaa"}
+    return UserService.get_user(id, db)
+    
 
 @router.put("/{id}", tags=["user"])
 async def update(id: int = None, data: UserDTO.User = None, db: Session = Depends(get_db)):
