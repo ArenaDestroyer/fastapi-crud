@@ -3,5 +3,5 @@ from datetime import datetime
 
 class User(BaseModel):
     name: str
-    balance: int
+    balance: float
     registration_time: datetime

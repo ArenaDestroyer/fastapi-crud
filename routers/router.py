@@ -8,6 +8,11 @@ from dto import user_model as UserDTO
 
 router = APIRouter()
 
+@router.get("/", tags=["user"])
+async def get_all_users(db: Session = Depends(get_db)):
+    users = UserService.get_all_users(db)
+    return users
+
 @router.post("/", tags=["user"])
 async def create(data: UserDTO.User = None, db: Session = Depends(get_db)):
     user = UserDTO.User(name=data.name, balance=data.balance, registration_time=data.registration_time)

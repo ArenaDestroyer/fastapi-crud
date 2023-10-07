@@ -2,6 +2,9 @@ from models.models import User
 from sqlalchemy.orm import Session
 from dto import user_model
 
+def get_all_users(db: Session):
+        return db.query(User).all()
+
 def create_user(data: user_model.User, db: Session):
     user = User(name=data.name, balance=data.balance)
     try:
