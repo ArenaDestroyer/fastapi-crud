@@ -1,8 +1,8 @@
-from models.user import User
+from models.model import User
 from sqlalchemy.orm import Session
-from dto import user
+from dto import user_model
 
-def create_user(data: user.User, db: Session):
+def create_user(data: user_model.User, db: Session):
     user = User(name=data.name)
     try:
         db.add(user)
@@ -16,7 +16,7 @@ def create_user(data: user.User, db: Session):
 def get_user(id: int, db):
     return db.query(User).filter(User.id==id).first()
     
-def update(data: user.User, db: Session, id: int):
+def update(data: user_model.User, db: Session, id: int):
     user = db.query(User).filter(User.id==id).first()
     user.name = data.name
     db.add(user)
